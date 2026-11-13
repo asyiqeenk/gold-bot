@@ -66,7 +66,7 @@ if any(p[k] != state.get(k) for k in jewel_keys):
 
 if any(p[k] != state.get(k) for k in non_keys):
     send("\n".join([
-        "✨ Harga Beli Emas Non-PG",
+        "✨ Harga Buyback Non-PG Gold",
         "",
         "Harga beli balik emas Non-PG baru sahaja dikemaskini.",
         "",
