@@ -10,7 +10,9 @@ def get_price():
     html = requests.get(URL, timeout=20,
                         headers={"User-Agent": "Mozilla/5.0"}).text
     m = re.search(r"RM\s*(\d+(?:\.\d+)?)\s*=\s*1\.0000\s*gram", html)
-    return float(m.group(1))
+    p = float(m.group(1))
+    g = re.search(r"RM\s*100\s*=\s*(\d+\.\d+)\s*gram", html)
+    return p, (g.group(1) if g else f"{100 / p:.4f}")
 
 # Malaysia time (UTC+8)
 now = datetime.now(timezone(timedelta(hours=8)))
@@ -18,7 +20,7 @@ today = f"{now.day} {now:%b %Y}"
 ampm = "am" if now.hour < 12 else "pm"
 stamp = f"{today} @ {now.hour % 12 or 12}:{now:%M} {ampm}"
 
-price = get_price()
+price, grams100 = get_price()
 data = json.load(open(FILE)) if os.path.exists(FILE) else {}
 last = data.get("p")
 
@@ -30,7 +32,7 @@ if price != last:
 
     lines = [
         "Public Gold GAP",
-        f"RM 100 = {100 / price:.4f} gram",
+        f"RM 100 = {grams100} gram",
         f"RM {price:g} = 1.0000 gram",
         "",
     ]
