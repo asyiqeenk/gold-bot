@@ -31,7 +31,7 @@ if price != last:
         data["high"], data["high_date"] = price, today
 
     lines = [
-        "Public Gold GAP",
+        "<b>Public Gold GAP</b>",
         f"RM 100 = {grams100} gram",
         f"RM {price:g} = 1.0000 gram",
         "",
