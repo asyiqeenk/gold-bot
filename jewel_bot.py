@@ -47,15 +47,15 @@ stamp = f"{now.day} {now:%b %Y} @ {now.hour % 12 or 12}:{now:%M} {ampm}"
 
 if any(p[k] != state.get(k) for k in jewel_keys):
     send("\n".join([
-        "💍 Harga Emas PG Jewel",
+        "<b>💍 Harga Emas PG Jewel</b>",
         "",
         "Harga barang kemas PG Jewel baru sahaja dikemaskini.",
         "",
-        "🏷️ PG Jewel (Sell)",
+        "🏷️<u> PG Jewel (Sell)</u>",
         f"🪙 Emas 999 = RM {p['j999_sell']:g}",
         f"🪙 Emas 916 = RM {p['j916_sell']:g}",
         "",
-        "💵 PG Jewel (Buy)",
+        "💵<u> PG Jewel (Buy)</u>",
         f"🪙 Emas 999 = RM {p['j999_buy']:g}",
         f"🪙 Emas 916 = RM {p['j916_buy']:g}",
         "",
@@ -66,7 +66,7 @@ if any(p[k] != state.get(k) for k in jewel_keys):
 
 if any(p[k] != state.get(k) for k in non_keys):
     send("\n".join([
-        "✨ Harga Buyback Non-PG Gold",
+        "✨<u> Harga Buyback Non-PG Gold</u>",
         "",
         "Harga beli balik emas Non-PG baru sahaja dikemaskini.",
         "",
