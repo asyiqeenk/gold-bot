@@ -49,7 +49,7 @@ if price != last:
 
     r = requests.post(
         f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-        data={"chat_id": CHAT_ID, "text": "\n".join(lines)})
+        data={"chat_id": CHAT_ID, "text": "\n".join(lines),"parse_mode": "HTML"})
     r.raise_for_status()
     data["p"] = price
     json.dump(data, open(FILE, "w"))
