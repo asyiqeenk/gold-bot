@@ -21,7 +21,7 @@ def send(text):
     for cid in CHAT_ID.split(","):
         r = requests.post(
             f"https://api.telegram.org/bot{TOKEN}/sendMessage",
-            data={"chat_id": cid.strip(), "text": text})
+            data={"chat_id": cid.strip(), "text": text,"parse_mode": "HTML"})
         r.raise_for_status()
 
 t = page_text()
